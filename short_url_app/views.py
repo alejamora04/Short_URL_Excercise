@@ -3,18 +3,6 @@ from .forms import OriginalURLForm, ShortURLForm
 from .models import UrlHandler
 from django.http import HttpResponseRedirect
 
-"""
-
-                                    [MVP]
-======================================================================================
-Delivery
-    1.) Style like Bit.ly.
-    2.) Write Unit Test for each function.
-    3.) Write Technical documentation exaplaining how app works with docstrings.
-    4.) Style like Bit.ly.
-    
-"""
-
 
 # Try to set up a Single Page App styling with logic to shorten a URL.
 def index(request):    
