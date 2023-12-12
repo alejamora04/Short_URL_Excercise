@@ -6,8 +6,6 @@ import secrets
 
 # Create your models here.
 class UrlHandler(models.Model):
-    # Title [Optional Field]
-    # title = models.TextField(blank=True)
 
     original_url = models.TextField()
     url_suffix = models.CharField(max_length=7, blank=True, null=True)

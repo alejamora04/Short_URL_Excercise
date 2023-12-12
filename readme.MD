@@ -25,7 +25,10 @@ To run the application repository source code has been containerized using Docke
        `$ docker compose up -d`
    
 7. Apply existing migrations to the Django project database to reflect the state of the database from the command line.
+       
+       
        `$ docker compose exec web python manage.py makemigrations --noinput`
+
 
        `$ docker compose exec web python manage.py migrate --noinput`
    
