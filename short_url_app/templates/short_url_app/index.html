@@ -1,0 +1,39 @@
+{% extends "short_url_app/base.html" %}
+
+{% block content %}
+<!-- URL input form [Original] -->
+<div class="display_box">
+    <div style="height: 100%; width: 100%;">
+        <h5>Enter a long web address to generate a shorter url </h5>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ URL_Form }}
+            </fieldset>
+            <button class="btn btn-primary" type="submit" style="margin-top: 1rem;">
+                Input URL
+            </button>
+        </form>
+    </div>
+    <!-- Navlink to expand URL -->
+    <div style="padding-top: 1rem;">
+        <h5> Do you want to retrieve the original full URL address instead? </h5>
+        <button class="btn btn-secondary" style="margin-top: 1rem;">
+            <a href="{% url 'short_url_app:expand' %}" style="text-decoration: none; color:white;"> Click Here </a>
+        </button>
+    </div>
+</div>
+
+<!-- Display shortened and lengthened urls once Generated -->
+{% if url_long_link %}
+<div class="display_box" style="margin-top: .5rem;">
+    <div class="url_output">
+        <h4> Heres your link for the shortened URL. </h4>
+        <!-- Parse Queried url model links-->
+        <span><h5>Full Length URL:</h5>{{ url_long_link }}</span></br>
+        <span><h5>Shorterned URL:</h5>127.0.0.1:8000/{{ url_short_link }}/</span></br>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "short_url_app/base.html" %}
+
+{% block content %}
+<div class="display_box">
+    <!-- Django rendering -->
+    <div style="height: 100%; width: 100%;">
+        <h5 style="color: rgb(3, 3, 71);">View the URL original full length URL by entering the shortcut. </h5>
+        <p style=" text-align: justify; text-justify: inter-word; padding: 1rem 1rem 0rem 1rem;"> 
+            This short cut can be found in the URL we created for you. It is a 7 character combination of letters and numbers.
+            </br>
+        </p>
+        "<span class="url_example">localhost:8000/<strong style="text-decoration: underline; color: black;">Character-Combination</strong>/
+        </span>"
+            </br>
+        "<span class="url_example">Ex.] localhost:8000/<strong style="text-decoration: underline; color: black;">abcd123</strong>/
+        </span>"
+        <form method="POST" style="padding-top: .5rem;">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ URL_Form }}
+            </fieldset>
+            <button class="btn btn-primary" type="submit" style="margin-top: 1rem;">
+                Submit URL
+            </button>
+        </form>
+    </div>
+
+    <!-- Navlink to expand URL -->
+    <div style="padding: 2rem 1rem 1rem 2rem;">
+        <h5> Changed your mind? Click here to go back!</h5>
+        <button class="btn btn-secondary" style="margin-top: 1rem;">
+            <a href="{% url 'short_url_app:index' %}" style="text-decoration: none; color: white;"> Click Here </a>
+        </button>
+    </div>
+
+</div>
+
+<!-- Display lengthened urls or error messages once Generated -->
+{% if url_long_link %}
+    <!-- Display shortened and lengthened urls. -->
+    <div class="display_box" style="margin-top: .5rem; padding: 2rem 1rem 1.3rem 1rem; ">
+        <div class ="url_output">
+            <h4 style="color: rgb(3, 3, 71); padding-top: 1.5rem;"> The following URL was generated. </h4>
+            <!-- Parse Queried url model links-->
+            <span><h5>{{ url_long_link }}</h5></span></br>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
